@@ -1,0 +1,45 @@
+{
+  "type": "module",
+  "name": "neucron-sdk",
+  "version": "0.2.3",
+  "description": "The official Neucron JavaScript SDK",
+  "exports": {
+    ".": "./dist/neucron-sdk.js",
+    "./src/neucron-sdk": "./src/neucron-sdk.js"
+  },
+  "main": "dist/neucron-sdk.js",
+  "scripts": {
+    "test": "mocha test/*.test.js && exit 0",
+    "lint": "eslint .",
+    "build": "npm run make:dir && npm run babel",
+    "make:dir": "mkdir -p dist",
+    "babel": "babel src -d dist --copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timechainlabs/Neucron-Javascript-SDK.git"
+  },
+  "author": "github.com/nikhil478",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timechainlabs/Neucron-Javascript-SDK.git/issues"
+  },
+  "homepage": "https://github.com/timechainlabs/Neucron-Javascript-SDK.git#readme",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "joi": "^17.4.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.2",
+    "@babel/preset-env": "^7.17.1",
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.3.4",
+    "eslint": "^8.48.0",
+    "eslint-plugin-import": "^2.28.1",
+    "mocha": "^9.1.2"
+  }
+}

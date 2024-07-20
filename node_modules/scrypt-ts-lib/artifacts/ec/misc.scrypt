@@ -1,0 +1,10 @@
+
+struct Point {
+  int x;
+  int y;
+}
+
+struct Signature {
+  int r;
+  int s;
+}

@@ -1,0 +1,26 @@
+import "../ec/bn256.scrypt";
+
+struct Proof {
+  G1Point a;
+  G2Point b;
+  G1Point c;
+}
+
+struct VerifyingKey {
+  FQ12 millerb1a1;
+  G2Point gamma;
+  G2Point delta;
+  G1Point[2] gammaAbc;
+}
+
+library G16BN256 {
+  static function verify(int[1] inputs, Proof proof, VerifyingKey vk) : bool {
+    G1Point vk_x = vk.gammaAbc[0];
+    loop (1) : i {
+        G1Point p = BN256.mulG1Point(vk.gammaAbc[i + 1], inputs[i]);
+        vk_x = BN256.addG1Points(vk_x, p);
+      }
+    G1Point a0 = {proof.a.x, -proof.a.y};
+    return BN256Pairing.pairCheckP4Precalc(a0, proof.b, vk.millerb1a1, vk_x, vk.gamma, proof.c, vk.delta);
+  }
+}

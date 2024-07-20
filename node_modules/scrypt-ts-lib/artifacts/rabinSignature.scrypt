@@ -1,0 +1,29 @@
+
+struct RabinSig {
+  int s;
+  bytes padding;
+}
+
+library RabinVerifier {
+  static function expandHash(bytes x) : bytes {
+    Sha256 hx = sha256(x);
+    return sha256(hx[0 : 16]) + sha256(hx[16 : len(hx)]);
+  }
+  static function hash(bytes x) : bytes {
+    bytes result = RabinVerifier.expandHash(x);
+    loop (5) : i {
+        result += RabinVerifier.expandHash(result);
+      }
+    return result;
+  }
+  static function verifySig(bytes msg, RabinSig sig, int pubKey) : bool {
+    int h = Utils.fromLEUnsigned(RabinVerifier.hash(msg + sig.padding));
+    return (sig.s * sig.s) % pubKey == h % pubKey;
+  }
+}
+
+library WitnessOnChainVerifier {
+  static function verifySig(bytes msg, RabinSig sig, int pubKey) : bool {
+    return RabinVerifier.verifySig(msg, sig, pubKey);
+  }
+}

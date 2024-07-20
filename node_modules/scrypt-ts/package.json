@@ -1,0 +1,65 @@
+{
+  "name": "scrypt-ts",
+  "version": "1.3.31",
+  "description": "A toolset for building sCrypt smart contract applications on Bitcoin SV network written in typescript.",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc --build src/tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "pregendocs": "npm run build",
+    "gendocs": "typedoc --tsconfig src/tsconfig.json --readme none --plugin typedoc-plugin-markdown --out scryptTS-docs src/index.ts",
+    "precompile": "rimraf test/artifacts",
+    "compile": "cd test && npx scrypt-cli@latest compile",
+    "pretest": "npm run build && npm run compile",
+    "test": "npm run td",
+    "td": "cd test && mocha",
+    "testnet": "cd test && mocha --config=.mocharc-testnet.json",
+    "publish:beta": "npm run build && npm publish --tag beta",
+    "publish:test": "npm run build && npm publish --tag test"
+  },
+  "author": "sCrypt.Inc",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "keywords": [
+    "typescript",
+    "sCrypt"
+  ],
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/chrome": "^0.0.237",
+    "@types/lodash": "^4.14.191",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "^18.11.10",
+    "@types/object-hash": "^3.0.2",
+    "@types/superagent": "^4.1.16",
+    "bigint-rnd": "^1.0.2",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "chai-exclude": "^2.1.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "i": "^0.3.7",
+    "mocha": "^10.1.0",
+    "msw": "^2.1.5",
+    "npm": "^9.1.3",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.25.7",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "deep-equal": "^2.2.0",
+    "fast-diff": "^1.2.0",
+    "lodash": "^4.17.21",
+    "object-hash": "^3.0.0",
+    "reflect-metadata": "^0.1.13",
+    "scryptlib": "^2.1.41",
+    "socket.io-client": "^4.6.1",
+    "superagent": "^8.0.9"
+  }
+}

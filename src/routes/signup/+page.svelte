@@ -1,5 +1,7 @@
 <script>
     // You can add JavaScript logic here if needed
+    /** @type {import('./$types').ActionData} */
+export let form;
 </script>
 
 <div
@@ -9,19 +11,7 @@
         <h2 class="text-3xl font-bold mb-6 text-center text-blue-600">
             Sign Up
         </h2>
-        <form>
-            <div class="mb-5">
-                <label
-                    for="name"
-                    class="block text-sm font-medium text-gray-700">Name</label
-                >
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    class="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                />
-            </div>
+        <form method="POST" action="?/signUp">
             <div class="mb-5">
                 <label
                     for="email"
@@ -53,9 +43,12 @@
                 >Sign Up</button
             >
         </form>
+        {#if form?.success}
+
+        <p class="pt-2">Signed Up</p>
+       <p class="pt-2">Details of your wallet : {form?.res}</p> 
+      {/if} 
     </div>
 </div>
 
-<style global>
-    /* Global styles can be added here */
-</style>
+

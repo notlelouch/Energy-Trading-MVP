@@ -1,58 +1,65 @@
 <script>
-    // You can add JavaScript logic here if needed
+    /** @type {import('./$types').ActionData} */
+export let form;
+
+function myFunction() {
+    if(form?.success){
+        alert("Login Successful. Your Balance is " + form?.balance);
+    } else if(form?.success == false){
+        alert("Login Failed");
+    }
+    else{
+        alert('Enter the Details ')
+    }
+}
 </script>
 
-<div class="min-h-screen bg-gray-100 flex flex-col">
-    <main class="flex-grow container mx-auto p-6">
-        <section class="text-center my-12">
-            <h2 class="text-4xl font-bold mb-4">
-                Welcome to the Future of Energy Trading
-            </h2>
-            <p class="text-lg mb-8">
-                Our platform facilitates secure and transparent peer-to-peer
-                energy trading using blockchain technology. Join us today to
-                start trading energy efficiently and securely.
-            </p>
-            <a
-                href="/signup"
-                class="bg-blue-600 text-white px-6 py-3 rounded-full text-lg hover:bg-blue-700"
-                >Get Started</a
+<div
+    class="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-6"
+>
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-center text-blue-600">
+            Login
+        </h2>
+        <form method="POST" action="?/login">
+            <div class="mb-5">
+                <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700">Email</label
+                >
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+            </div>
+            <div class="mb-5">
+                <label
+                    for="password"
+                    class="block text-sm font-medium text-gray-700"
+                    >Password</label
+                >
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+            </div>
+            <button
+                type="submit"
+                class="bg-blue-600 text-white py-3 rounded-lg w-full font-semibold hover:bg-blue-700 transition duration-300"
+                on:click={myFunction}
+                >Login</button
             >
-        </section>
-
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-2xl font-bold mb-2">List Energy</h3>
-                <p class="mb-4">
-                    Sell your excess energy by listing it on our platform.
-                </p>
-                <a href="/list-energy" class="text-blue-600 hover:underline"
-                    >Learn More</a
-                >
-            </div>
-
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-2xl font-bold mb-2">Buy Energy</h3>
-                <p class="mb-4">
-                    Browse available energy listings and purchase the energy you
-                    need.
-                </p>
-                <a href="/buy-energy" class="text-blue-600 hover:underline"
-                    >Learn More</a
-                >
-            </div>
-
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-2xl font-bold mb-2">Track Transactions</h3>
-                <p class="mb-4">
-                    Keep track of all your energy transactions and consumption
-                    history.
-                </p>
-                <a
-                    href="/transaction-history"
-                    class="text-blue-600 hover:underline">Learn More</a
-                >
-            </div>
-        </section>
-    </main>
+        </form>
+        <!-- {#if form?.success}
+        <!-- this message is ephemeral; it exists because the page was rendered in
+               response to a form submission. it will vanish if the user reloads -->
+        <!-- <p class="pt-2">Logged in. Balance is {form?.balance} </p>
+      {/if} -->
+    </div>
 </div>
+
+

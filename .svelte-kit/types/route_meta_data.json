@@ -4,7 +4,9 @@
 	"/index": [],
 	"/list-energy": [],
 	"/login": [],
-	"/profile": [],
+	"/profile": [
+		"src/routes/profile/+page.server.ts"
+	],
 	"/signup": [],
 	"/track-transactions": [],
 	"/transaction-history": []

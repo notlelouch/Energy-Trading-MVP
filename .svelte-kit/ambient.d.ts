@@ -26,6 +26,14 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const POSTGRES_URL: string;
+	export const POSTGRES_PRISMA_URL: string;
+	export const POSTGRES_URL_NO_SSL: string;
+	export const POSTGRES_URL_NON_POOLING: string;
+	export const POSTGRES_USER: string;
+	export const POSTGRES_HOST: string;
+	export const POSTGRES_PASSWORD: string;
+	export const POSTGRES_DATABASE: string;
 	export const NVM_INC: string;
 	export const MANPATH: string;
 	export const TERM_PROGRAM: string;
@@ -121,6 +129,14 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		POSTGRES_URL: string;
+		POSTGRES_PRISMA_URL: string;
+		POSTGRES_URL_NO_SSL: string;
+		POSTGRES_URL_NON_POOLING: string;
+		POSTGRES_USER: string;
+		POSTGRES_HOST: string;
+		POSTGRES_PASSWORD: string;
+		POSTGRES_DATABASE: string;
 		NVM_INC: string;
 		MANPATH: string;
 		TERM_PROGRAM: string;

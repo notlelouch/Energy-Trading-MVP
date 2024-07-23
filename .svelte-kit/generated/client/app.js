@@ -22,7 +22,7 @@ export const dictionary = {
 		"/index": [4],
 		"/list-energy": [5],
 		"/login": [6],
-		"/profile": [7],
+		"/profile": [~7],
 		"/signup": [8],
 		"/track-transactions": [9],
 		"/transaction-history": [10]

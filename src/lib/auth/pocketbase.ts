@@ -29,12 +29,12 @@ export const pocketbase: AuthAdapter = {
 		return ok({ ...user, token });
 	},
 
-	async signup({ email, password, password_confirm }) {
+	async signup({name, email, password, password_confirm }) {
 		// TODO: add Zod
 		const resp = await pocketbase_request<SignupResponse>({
 			path: "/users",
 			method: "POST",
-			body: { email, password, passwordConfirm: password_confirm },
+			body: { name, email, password, passwordConfirm: password_confirm },
 			fallback_error_message: "error logging in",
 		});
 

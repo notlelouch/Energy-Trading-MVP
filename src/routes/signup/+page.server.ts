@@ -6,6 +6,7 @@ import type { Actions } from "./$types";
 export const actions: Actions = {
 	async default(event) {
 		const data = await event.request.formData();
+		const name = data.get("name") as string;
 		const email = data.get("email") as string;
 		const password = data.get("password") as string;
 		const password_confirm = data.get("password-confirm") as string;
@@ -31,6 +32,7 @@ export const actions: Actions = {
 			});
 
 		const signup_resp = await auth.signup({
+			name,
 			email,
 			password,
 			password_confirm,

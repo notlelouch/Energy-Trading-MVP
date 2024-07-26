@@ -68,7 +68,46 @@
         >
       </div>
     </div>
+
+    <div
+    class="bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+  >
+    <div class="p-6">
+      <h2 class="text-2xl font-bold mb-2 text-blue-100">My Listing</h2>
+      <p class="text-blue-200 mb-4">Sell your excess energy with ease</p>
+      <p class="text-gray-300 mb-6">
+        Turn your surplus power into profit. List your energy and connect with
+        buyers instantly.
+      </p>
+      <a
+        href="/my-listing"
+        class="inline-block bg-blue-100 text-blue-900 py-2 px-6 rounded-full font-semibold hover:bg-blue-200 transition duration-300"
+        >Start Selling</a
+      >
+    </div>
   </div>
+  
+  
+  <div
+  class="bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+  >
+  <div class="p-6">
+    <h2 class="text-2xl font-bold mb-2 text-blue-100">My Purchases</h2>
+    <p class="text-blue-200 mb-4">Sell your excess energy with ease</p>
+    <p class="text-gray-300 mb-6">
+      Turn your surplus power into profit. List your energy and connect with
+      buyers instantly.
+    </p>
+    <a
+      href="/my-purchases"
+      class="inline-block bg-blue-100 text-blue-900 py-2 px-6 rounded-full font-semibold hover:bg-blue-200 transition duration-300"
+      >Start Selling</a
+    >
+  </div>
+  </div>
+  </div>
+
+
 
   <!-- <div class="bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
     <h2 class="text-2xl font-bold mb-4 text-gray-100">Quick Links</h2>

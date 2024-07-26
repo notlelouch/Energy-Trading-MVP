@@ -35,7 +35,7 @@
         }
         return current;
       });
-      successMessage = 'Data saved successfully!';
+      return successMessage = 'Data saved successfully!';
     }
     isReadOnly = !isReadOnly;
   }
@@ -105,12 +105,14 @@
         class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition duration-300 font-semibold"
         on:click={toggleReadOnly}
       >
-        {isReadOnly ? 'Edit' : 'Save'}
+        {!isReadOnly ? 'Save' : 'Edit'}
+
       </button>
-    </form>
-    {#if successMessage}
-      <p class="pt-2 text-center text-green-500">{successMessage}</p>
+      {#if successMessage}
+      <p class="pt-2 text-center text-green-500">Message : {successMessage}</p>
     {/if}
+    </form>
+
   </main>
 </div>
 

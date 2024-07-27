@@ -1,5 +1,6 @@
 <script lang="ts">
-  // import Table from "$lib/Table.svelte";
+  import Table from "$lib/Table.svelte";
+  import { page } from "$app/stores";
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -9,6 +10,25 @@
   export let form;
 </script>
 
+<!-- <Table names={data.names} /> -->
+<!-- <div class="text-sm mt-4 md:mt-0">
+  <button
+    class="text-blue-400 hover:text-blue-300"
+    on:click={() => (visible = !visible)}
+  >
+    {#if visible}
+      Hide
+    {:else}
+      Show page data
+    {/if}
+  </button>
+</div>
+{#if visible && Object.keys($page.data).length}
+  <section transition:fade>
+    <h3>Page data:</h3>
+    <pre>{JSON.stringify($page.data, null, 2)}</pre>
+  </section>
+{/if} -->
 <div
   class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex flex-col items-center"
 >

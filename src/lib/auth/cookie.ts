@@ -9,6 +9,7 @@ import { err, ok } from "neverthrow";
 const log = debug("app:lib:auth:cookie");
 
 const seed_user: User = {
+	name: "seed-user",
 	id: "seed-user-id",
 	email: "a@b.com",
 	password: "asdfasdf",
@@ -63,7 +64,7 @@ export const cookie: AuthAdapter = {
 		return ok(user);
 	},
 
-	async signup({ email, password, password_confirm, opts }) {
+	async signup({ name, email, password, password_confirm, opts }) {
 		// TODO: add Zod
 		if (!opts?.cookies)
 			return err(new Error("must pass cookies in to options"));
@@ -73,7 +74,7 @@ export const cookie: AuthAdapter = {
 			return err(new Error("passwords do not match"));
 
 		const token = generate_token();
-		const user = { id: generate_token(), email, password, token };
+		const user = { id: generate_token(),name, email, password, token };
 		const users = get_users(opts.cookies);
 
 		set_users(opts.cookies, [...users, user]);

@@ -25,6 +25,42 @@
           </a>
         </div>
         <!-- Repeat above block for each listing -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold mb-2 text-blue-100">Wind Energy</h3>
+          <p class="text-gray-300">Quantity: 1000 kWh</p>
+          <p class="text-gray-300">Price per Unit: $5</p>
+          <a
+            href="/buy-energy/details"
+            class="bg-blue-600 text-white py-2 px-4 rounded-full mt-4 inline-block hover:bg-blue-700 transition duration-300"
+          >
+            Buy Now
+          </a>
+        </div>
+        <!-- Repeat above block for each listing -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold mb-2 text-blue-100">Hydrogen Energy</h3>
+          <p class="text-gray-300">Quantity: 1000 kWh</p>
+          <p class="text-gray-300">Price per Unit: $10</p>
+          <a
+            href="/buy-energy/details"
+            class="bg-blue-600 text-white py-2 px-4 rounded-full mt-4 inline-block hover:bg-blue-700 transition duration-300"
+          >
+            Buy Now
+          </a>
+        </div>
+        <!-- Repeat above block for each listing -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold mb-2 text-blue-100">Electric Energy</h3>
+          <p class="text-gray-300">Quantity: 1000 kWh</p>
+          <p class="text-gray-300">Price per Unit: $1</p>
+          <a
+            href="/buy-energy"
+            class="bg-blue-600 text-white py-2 px-4 rounded-full mt-4 inline-block hover:bg-blue-700 transition duration-300"
+          >
+            Buy Now
+          </a>
+        </div>
+        <!-- Repeat above block for each listing -->
       </div>
     </section>
   </main>

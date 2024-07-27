@@ -1,5 +1,6 @@
 <script>
   // JavaScript logic can be added here if necessary
+  export let form;
 </script>
 
 <div
@@ -13,17 +14,45 @@
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         <!-- Example listing, repeat for actual data -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <form id="1" method="POST" action="?/pay" class="bg-gray-800 p-6 rounded-lg shadow-lg">
           <h3 class="text-2xl font-bold mb-2 text-blue-100">Solar Energy</h3>
           <p class="text-gray-300">Quantity: 1000 kWh</p>
           <p class="text-gray-300">Price per Unit: $0.10</p>
-          <a
-            href="/buy-energy/details"
-            class="bg-blue-600 text-white py-2 px-4 rounded-full mt-4 inline-block hover:bg-blue-700 transition duration-300"
-          >
-            Buy Now
-          </a>
-        </div>
+          <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="amount"
+        >
+          amount
+        </label>
+        <input
+          class="appearance-none block w-full bg-gray-200 text-gray-300 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="amount"
+          type="text"
+          placeholder="Enter amount"
+          name="amount"
+        />
+        <label
+        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        for="paymail"
+      >
+        Paymail
+      </label>
+      <input
+        class="appearance-none block w-full bg-gray-200 text-gray-300 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        id="paymail"
+        type="text"
+        placeholder="Enter paymail"
+        name="paymail"
+      />
+      <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-full mt-4 inline-block hover:bg-blue-700 transition duration-300">Buy Now</button>
+      {#if form?.success}
+      <!-- this message is ephemeral; it exists because the page was rendered in
+         response to a form submission. it will vanish if the user reloads -->
+      <p class="pt-2">The payment was successful. Here is your <a href="https://whatsonchain.com/tx/{form?.payment}">transaction</a>!</p>
+    {/if}
+        </form>
+
+
         <!-- Repeat above block for each listing -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
           <h3 class="text-2xl font-bold mb-2 text-blue-100">Wind Energy</h3>

@@ -1,68 +1,73 @@
 import NeucronSDK from "neucron-sdk";
+import { session} from "$lib/stores/session";
+import { get } from 'svelte/store';
 
 /** @type {import('./$types').Actions} */
+
+
 export const actions = {
 
-//     login: async ({request}) => {
-// 	    const data = await request.formData();
+    // login: async ({request}) => {
+	  //   const data = await request.formData();
         
 
-//     const neucron = new NeucronSDK();
+    // const neucron = new NeucronSDK();
 
-//     const authModule = neucron.authentication;
-//     const walletModule = neucron.wallet;
+    // const authModule = neucron.authentication;
+    // const walletModule = neucron.wallet;
 
-// // const signUpResponse = await authModule.signUp({ email: "sales@timechainlabs.io", password: "string" });
-// // console.log(signUpResponse);
+// const signUpResponse = await authModule.signUp({ email: "sales@timechainlabs.io", password: "string" });
+// console.log(signUpResponse);
 
-//     const loginResponse = await authModule.login({ email: data.get('email'), password: data.get('password') });
-//     console.log(loginResponse);
+    // const loginResponse = await authModule.login({ email: data.get('email'), password: data.get('password') });
+    // console.log(loginResponse);
 
-//     // const walletKeys = await walletModule.getWalletKeys({});
-//     // console.log(walletKeys);
+    // const walletKeys = await walletModule.getWalletKeys({});
+    // console.log(walletKeys);
 
-//     // For Default wallet balance
-//     const DefaultWalletBalance = await walletModule.getWalletBalance({});
-//     console.log(DefaultWalletBalance);
+    // For Default wallet balance
+    // const DefaultWalletBalance = await walletModule.getWalletBalance({});
+    // console.log(DefaultWalletBalance);
 
-//     // const addresses = await walletModule.getAddressesByWalletId({});
-//     // console.log(addresses);
-
-
-//     // const walletHistory = await walletModule.getWalletHistory({ });
-//     // console.log(walletHistory);
+    // const addresses = await walletModule.getAddressesByWalletId({});
+    // console.log(addresses);
 
 
-// // console.log('initiating wallet')
-// // const walletCreation1 = await walletModule.createWallet({ walletName: 'Hello tsoc1' });
-// // console.log(walletCreation1);
+    // const walletHistory = await walletModule.getWalletHistory({ });
+    // console.log(walletHistory);
 
-// // const walletBalance = await walletModule.getWalletBalance({ walletId: walletCreation1.walletID });
-// // console.log(walletBalance);
 
-// // const addresses = await walletModule.getAddressesByWalletId({ walletId: walletCreation1.walletID });
-// // console.log(addresses);
+// console.log('initiating wallet')
+// const walletCreation1 = await walletModule.createWallet({ walletName: 'Hello tsoc1' });
+// console.log(walletCreation1);
 
-// // const mnemonic = await walletModule.getMnemonic({ walletId: walletCreation1.walletID });
-// // console.log(mnemonic);
+// const walletBalance = await walletModule.getWalletBalance({ walletId: walletCreation1.walletID });
+// console.log(walletBalance);
 
-// // const allUtxos = await walletModule.getAllUtxos({ walletId: walletCreation1.walletID });
-// // console.log(allUtxos);
+// const addresses = await walletModule.getAddressesByWalletId({ walletId: walletCreation1.walletID });
+// console.log(addresses);
 
-// // const xPubKeys = await walletModule.getXPubKeys({ walletId: walletCreation1.walletID });
-// // console.log(xPubKeys);
+// const mnemonic = await walletModule.getMnemonic({ walletId: walletCreation1.walletID });
+// console.log(mnemonic);
+
+// const allUtxos = await walletModule.getAllUtxos({ walletId: walletCreation1.walletID });
+// console.log(allUtxos);
+
+// const xPubKeys = await walletModule.getXPubKeys({ walletId: walletCreation1.walletID });
+// console.log(xPubKeys);
         
-//         return { success: true, balance: DefaultWalletBalance.data.balance.summary };
-// 	},
+  //       return { success: true, balance: DefaultWalletBalance.data.balance.summary };
+	// },
     pay: async ({request}) => {
 	    const data = await request.formData();
+    const sessionData = get(session);
         
     const neucron = new NeucronSDK();
 
     const authModule = neucron.authentication;
     const walletModule = neucron.wallet;
 
-    const loginResponse = await authModule.login({ email: data.get('email'), password: data.get('password') });
+    const loginResponse = await authModule.login({ email: sessionData.user?.email, password: sessionData.user?.password });
     console.log(loginResponse);
 
 
@@ -70,7 +75,7 @@ export const actions = {
         outputs: [
         {
             address: data.get('paymail'),
-            note: 'gurudakshina',
+            note: 'Transaction Successful',
             amount: Number(data.get('amount'))
         }
         ]

@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import { page } from "$app/stores";
   import { fade } from "svelte/transition";
 
@@ -31,4 +31,4 @@
       <pre>{JSON.stringify($page.data, null, 2)}</pre>
     </section>
   {/if}
-</footer>
+</footer> -->

@@ -2,107 +2,81 @@
   import { session } from "$lib/stores/session";
 </script>
 
-<div
-  class="min-h-screen bg-gradient-to-br from-green-900 to-blue-900 text-gray-100 py-16 px-4 sm:px-6 lg:px-8"
->
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-5xl font-extrabold text-center mb-8 text-green-400">
-      Energy Trading Platform
-    </h1>
-    <p class="text-2xl text-center mb-12">
-      Revolutionizing peer-to-peer energy trading with blockchain technology
-    </p>
+<div class="min-h-screen bg-black text-white font-mono p-8 flex flex-col">
+  <header class="mb-12 text-center">
+    <h1 class="text-4xl font-light mb-2">ENERGY TRADING MVP</h1>
+    <p class="text-sm text-gray-500">Peer-to-Peer Energy Trading on Blockchain</p>
+  </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-      <div class="bg-gray-800 rounded-xl shadow-lg p-8">
-        <h2 class="text-2xl font-bold mb-4 text-blue-400">
-          Blockchain-Powered
-        </h2>
-        <p class="mb-4">
-          Our platform leverages cutting-edge blockchain technology to ensure:
-        </p>
-        <ul class="list-disc list-inside mb-6 space-y-2">
-          <li>Secure and transparent transactions</li>
-          <li>Immutable record of energy trades</li>
-          <li>Smart contracts for automated settlements</li>
-          <li>Reduced transaction costs</li>
+  <main class="flex-grow flex flex-col items-center justify-center space-y-12">
+    <section class="text-center max-w-2xl">
+      <h2 class="text-2xl mb-4">REVOLUTIONIZE ENERGY TRADING</h2>
+      <p class="text-sm text-gray-500">
+        Secure, transparent, and efficient peer-to-peer energy trading powered by blockchain technology.
+      </p>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+      <div class="border border-white p-6 hover:bg-white hover:text-black transition-colors duration-300">
+        <h3 class="text-lg mb-2">FOR SELLERS</h3>
+        <ul class="text-sm space-y-2">
+          <li>• List your energy for sale</li>
+          <li>• Set your own prices</li>
+          <li>• Manage your listings</li>
+          <li>• Track your sales</li>
         </ul>
       </div>
-
-      <div class="bg-gray-800 rounded-xl shadow-lg p-8">
-        <h2 class="text-2xl font-bold mb-4 text-blue-400">
-          Peer-to-Peer Trading
-        </h2>
-        <p class="mb-4">Experience the benefits of direct energy trading:</p>
-        <ul class="list-disc list-inside mb-6 space-y-2">
-          <li>Connect directly with local energy producers</li>
-          <li>Competitive pricing without intermediaries</li>
-          <li>Support for various energy types (solar, wind, etc.)</li>
-          <li>Contribute to a more sustainable energy ecosystem</li>
+      <div class="border border-white p-6 hover:bg-white hover:text-black transition-colors duration-300">
+        <h3 class="text-lg mb-2">FOR BUYERS</h3>
+        <ul class="text-sm space-y-2">
+          <li>• Browse energy listings</li>
+          <li>• Purchase energy units</li>
+          <li>• View transaction history</li>
+          <li>• Monitor energy consumption</li>
         </ul>
       </div>
-    </div>
+    </section>
 
-    <div class="bg-gray-800 rounded-xl shadow-lg p-8 mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center text-green-400">
-        Platform Features
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="text-center">
-          <h3 class="text-xl font-semibold mb-2 text-blue-400">
-            Real-Time Tracking
-          </h3>
-          <p>
-            Monitor your energy production, sales, purchases, and consumption in
-            real-time.
-          </p>
-        </div>
-        <div class="text-center">
-          <h3 class="text-xl font-semibold mb-2 text-blue-400">
-            Flexible Pricing
-          </h3>
-          <p>
-            Set your own prices as a seller or choose the best deals as a buyer.
-          </p>
-        </div>
-        <div class="text-center">
-          <h3 class="text-xl font-semibold mb-2 text-blue-400">
-            Automated Payments
-          </h3>
-          <p>
-            Secure, blockchain-based transactions with automatic revenue
-            distribution.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center mb-12">
+    <section class="text-center">
       {#if $session?.user}
         <a
           href="/dashboard"
-          class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-center mr-4"
+          class="inline-block px-8 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300"
         >
-          Go to Dashboard
+          GO TO DASHBOARD
         </a>
       {:else}
         <a
           href="/signup"
-          class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-center mr-4"
+          class="inline-block px-8 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 mr-4"
         >
-          Sign up
+          SIGN UP
         </a>
         <a
           href="/login"
-          class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-center"
+          class="inline-block px-8 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300"
         >
-          Login
+          LOGIN
         </a>
       {/if}
-    </div>
-  </div>
+    </section>
+  </main>
+
+  <footer class="mt-12 text-center text-xs text-gray-500 flex flex-col items-center">
+    <p>© 2024 ENERGY TRADING MVP | ALL RIGHTS RESERVED</p>
+    <nav class="mt-2">
+      <a href="/about" class="hover:underline text-green-500">About Us</a>
+      <span class="mx-2">|</span>
+      <a href="/contact" class="hover:underline text-green-500">Contact Us</a>
+    </nav>
+  </footer>
 </div>
 
+<style>
+  :global(body) {
+    background-color: black;
+  }
+</style>
 <!-- <footer
   class="bottom-0 left-0 z-20 w-full p-4 bg-gray-900 border-t border-gray-900 shadow md:flex md:items-center md:justify-between md:p-6"
 >

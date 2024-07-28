@@ -64,6 +64,10 @@
   }
 </script>
 
+
+
+
+<!-- 
 <div class="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center p-4">
   <div class="w-full max-w-md bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-700 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl">
     <div class="p-8">
@@ -120,4 +124,95 @@
       </form>
     </div>
   </div>
+</div> -->
+
+
+
+
+<div class="min-h-screen bg-black text-white font-mono p-8 flex flex-col">
+  <header class="mb-12">
+    <h1 class="text-2xl font-light">ENERGY TRADING MVP</h1>
+    <p class="text-sm text-gray-500">Profile Settings</p>
+  </header>
+
+  <div class="flex-grow">
+    <form on:submit={saveProfile} class="space-y-6 max-w-md mx-auto">
+      {#if successMessage}
+        <div class="mb-4 py-2 px-3 border-l-4 border-green-500">
+          <p class="text-green-500 text-sm">{successMessage}</p>
+        </div>
+      {/if}
+      {#if errorMessage}
+        <div class="mb-4 py-2 px-3 border-l-4 border-red-500">
+          <p class="text-red-500 text-sm">{errorMessage}</p>
+        </div>
+      {/if}
+
+      <div class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm text-gray-500 mb-1">NAME</label>
+          <input type="text" id="name" name="name" bind:value={name} readonly 
+                 class="w-full py-2 px-3 bg-black text-white border border-gray-700 focus:border-white focus:outline-none transition-colors" />
+        </div>
+        <div>
+          <label for="email" class="block text-sm text-gray-500 mb-1">EMAIL</label>
+          <input type="email" id="email" name="email" bind:value={email} readonly 
+                 class="w-full py-2 px-3 bg-black text-white border border-gray-700 focus:border-white focus:outline-none transition-colors" />
+        </div>
+        <div>
+          <label for="address" class="block text-sm text-gray-500 mb-1">ADDRESS</label>
+          <input type="text" id="address" name="address" bind:value={address} placeholder="Enter your address" 
+                 class="w-full py-2 px-3 bg-black text-white border border-gray-700 focus:border-white focus:outline-none transition-colors" 
+                 disabled={!isEditing} />
+        </div>
+        <div>
+          <label for="energySourceDetails" class="block text-sm text-gray-500 mb-1">ENERGY SOURCE</label>
+          <input type="text" id="energySourceDetails" name="energySourceDetails" bind:value={energySourceDetails} 
+                 placeholder="Enter energy source details" 
+                 class="w-full py-2 px-3 bg-black text-white border border-gray-700 focus:border-white focus:outline-none transition-colors" 
+                 disabled={!isEditing} />
+        </div>
+        <div>
+          <label for="paymentMethod" class="block text-sm text-gray-500 mb-1">PAYMENT METHOD</label>
+          <input type="text" id="paymentMethod" name="paymentMethod" bind:value={paymentMethod} 
+                 placeholder="Enter payment method" 
+                 class="w-full py-2 px-3 bg-black text-white border border-gray-700 focus:border-white focus:outline-none transition-colors" 
+                 disabled={!isEditing} />
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-3">
+        {#if isEditing}
+          <button type="submit" 
+                  class="px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300">
+            SAVE
+          </button>
+          <button type="button" on:click={toggleEdit} 
+                  class="px-6 py-2 border border-gray-700 text-gray-700 hover:border-white hover:text-white transition-colors duration-300">
+            CANCEL
+          </button>
+        {:else}
+          <button type="button" on:click={toggleEdit} 
+                  class="px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300">
+            EDIT
+          </button>
+        {/if}
+      </div>
+    </form>
+  </div>
+
+  <footer class="mt-12 text-center text-xs text-gray-500 flex flex-col items-center">
+    <p>© 2024 ENERGY TRADING MVP | ALL RIGHTS RESERVED</p>
+    <nav class="mt-2">
+      <a href="/about" class="hover:underline text-green-500">About Us</a>
+      <span class="mx-2">|</span>
+      <a href="/contact" class="hover:underline text-green-500">Contact Us</a>
+    </nav>
+  </footer>
 </div>
+
+<style>
+  :global(body) {
+    background-color: black;
+  }
+</style>

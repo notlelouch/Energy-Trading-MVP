@@ -15,10 +15,10 @@ export const actions: Actions = {
 			return invalid(422, { email, error: "An email address is required." });
 		if (!password)
 			return invalid(422, { email, error: "A password is required." });
-		if (password.length < 8)
+		if (password.length < 4)
 			return invalid(422, {
 				email,
-				error: "Password must be at least 8 characters long.",
+				error: "Password must be at least 4 characters long.",
 			});
 		if (password.length > 32)
 			return invalid(422, {

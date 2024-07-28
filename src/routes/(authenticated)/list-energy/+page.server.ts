@@ -80,7 +80,7 @@ export const load: PageServerLoad = async ({ locals }) => {
       }
   
       try {
-        const userId = locals.user.id;
+        const userId = locals.user.email;
         console.log("Attempting to insert into database");
   
         const result = await db.query(

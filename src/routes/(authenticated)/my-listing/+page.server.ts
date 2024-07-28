@@ -16,7 +16,7 @@ export const load: PageServerLoad = async ({ locals }) => {
   try {
     const result = await db.query(
       "SELECT * FROM energy_listings WHERE user_id = $1 ORDER BY created_at DESC",
-      [user.id]
+      [user.email]
     );
 
     // Convert date fields to strings and format the price

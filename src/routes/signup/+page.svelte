@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import { applyAction, enhance } from "$app/forms";
   import { faWarning } from "@fortawesome/free-solid-svg-icons";
   import Fa from "svelte-fa";
@@ -112,5 +112,137 @@
   }
   footer {
     flex-shrink: 0; /* Prevents footer from shrinking */
+  }
+</style> -->
+<script lang="ts">
+  import { applyAction, enhance } from "$app/forms";
+  import { goto } from "$app/navigation";
+  import { session } from "$lib/stores/session";
+  import debug from "debug";
+  import type { ActionData } from "./$types";
+
+  const log = debug("app:routes:signup:page.svelte");
+  export let form: ActionData;
+</script>
+
+<div
+  class="min-h-screen bg-black text-white font-mono p-8 flex flex-col items-center justify-center"
+>
+  <main class="w-full max-w-md">
+    <header class="mb-12 text-center">
+      <h1 class="text-2xl font-light">SIGN UP</h1>
+      <p class="text-sm text-gray-500">Create your account</p>
+    </header>
+
+    <form
+      class="space-y-6"
+      method="POST"
+      use:enhance={() =>
+        async ({ result }) => {
+          log("form result:", result);
+          await applyAction(result);
+          if (result.type === "success") {
+            const user = result.data?.user;
+            if (user) $session.user = user;
+            await goto("/dashboard");
+          }
+        }}
+    >
+      {#if form?.error}
+        <div class="bg-red-500 text-white p-3 text-sm">
+          {form.error}
+        </div>
+      {/if}
+
+      <div>
+        <label for="name" class="block text-sm font-medium mb-2">NAME</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          class="w-full p-2 bg-black border border-white text-white focus:outline-none focus:border-green-400"
+          required
+          value={form?.name ?? ""}
+        />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium mb-2">EMAIL</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          class="w-full p-2 bg-black border border-white text-white focus:outline-none focus:border-green-400"
+          required
+          value={form?.email ?? ""}
+        />
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-medium mb-2"
+          >PASSWORD</label
+        >
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Your Password"
+          class="w-full p-2 bg-black border border-white text-white focus:outline-none focus:border-green-400"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="password-confirm" class="block text-sm font-medium mb-2"
+          >CONFIRM PASSWORD</label
+        >
+        <input
+          id="password-confirm"
+          type="password"
+          name="password-confirm"
+          placeholder="Confirm Your Password"
+          class="w-full p-2 bg-black border border-white text-white focus:outline-none focus:border-green-400"
+          required
+        />
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          class="w-full border border-white p-2 hover:bg-white hover:text-black transition-colors duration-300"
+        >
+          SIGN UP
+        </button>
+      </div>
+
+      <div class="text-center text-sm">
+        <span class="text-gray-500">Already have an account?</span>
+        <a href="/login" class="text-green-400 hover:underline ml-1">LOGIN</a>
+      </div>
+    </form>
+
+    {#if form}
+      <section class="mt-12">
+        <h3 class="text-xl font-bold mb-4 text-green-400">Form data:</h3>
+        <pre
+          class="bg-gray-800 p-4 rounded-md overflow-x-auto text-xs">{JSON.stringify(
+            form,
+            null,
+            2
+          )}</pre>
+      </section>
+    {/if}
+  </main>
+
+  <footer class="mt-12 text-center text-xs text-gray-500">
+    <p>© 2024 ENERGY TRADING MVP | ALL RIGHTS RESERVED</p>
+  </footer>
+</div>
+
+<style>
+  :global(body) {
+    background-color: black;
   }
 </style>

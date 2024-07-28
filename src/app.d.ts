@@ -12,6 +12,9 @@ declare namespace App {
 
 interface User {
 	id?: string;
+	address: string;
+	energy_source_details: string;
+	payment_method: string;
 	email: string;
 	password?: string;
 	token?: string;
@@ -28,6 +31,7 @@ interface AuthAdapter {
 		opts?: any;
 	}): Promise<AuthResponse>;
 	signup(props: {
+		name: string;
 		email: string;
 		password: string;
 		password_confirm: string;

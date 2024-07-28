@@ -59,11 +59,16 @@
       Energy Trading MVP
     </a>
 
-    <nav class="dropdown dropdown-end ml-auto">
+    <!-- <nav class="dropdown dropdown-end ml-auto">
       <label tabindex="0" class="btn btn-ghost gap-3">
         <Fa icon={faBars} />
         Menu
-      </label>
+      </label> -->
+         <nav class="dropdown dropdown-end ml-auto">
+      <button tabindex="0" class="btn btn-ghost gap-3" aria-haspopup="true" aria-expanded="false">
+        <Fa icon={faBars} />
+        Menu
+      </button>
       <ul
         tabindex="0"
         class="dropdown-content menu p-2 shadow-md bg-base-200 rounded-box w-52 "

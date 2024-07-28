@@ -1,41 +1,47 @@
-# SvelteKit Auth Example
+# Energy Trading MVP
 
-![image](https://user-images.githubusercontent.com/157695/190524032-cc22bf37-de46-4d9b-aa05-1c2ef7fca60f.png)
+Welcome to the Energy Trading MVP repository. This project facilitates peer-to-peer energy trading through a secure platform built on the Bitcoin SV (BSV) blockchain, enabling users to seamlessly buy and sell energy units.
+
+## Overview
+
+The Energy Trading MVP aims to enhance transparency and efficiency in energy transactions. Utilizing the BSV blockchain, the platform ensures secure and verifiable trades, creating a streamlined and reliable energy marketplace.
 
 
-## Setup
+## Key Features
 
-```shell
-npm install
-```
+- **User-Friendly Registration:** Easy onboarding for energy sellers and buyers.
+- **Dynamic Listings:** Create, manage, and browse energy listings.
+- **Secure Transactions:** Blockchain-backed processes on the BSV chain.
+- **Comprehensive History:** Detailed records of transactions and energy consumption.
 
-## Development
 
-```shell
-npm run dev
+## Quick Start
 
-# Run with debug logging:
-DEBUG="app:*" npm run dev
-```
+To get started with Enery Trading, follow these steps:
 
-To debug in the browser, open up the `Console` in DevTools and type:
+- **Clone the Repository:** Clone the repository to your local machine using the following command:
 
-```js
-localStorage.debug = "app:*";
-```
+   ```bash
+    git clone https://github.com/notlelouch/Energy-Trading-MVP.git
+    cd Energy-Trading-MVP
+   ```
+- **Navigate to Desired Module:** Depending on the service you want to explore, navigate to one of the subdirectories (e.g., Starloom-frontend, Starloom-deploy-service, etc.).
+- **Install Dependencies:**
+  ```bash
+  npm install
+  ```
+- **Setup Postgres Database** 
+- **Run the Application:** 
+     ```bash
+     npm run dev
+     ```
 
-### Using auth adapters
+## API Overview
+- **User Management:** Registration and login.
+- **Energy Listings:** Create and view listings.
+- **Purchases:** Facilitate and record purchases.
+- **Transactions:** Monitor and track transaction history.
 
-This project is built in a way to abstract the authentication layer so that you can pick and choose which type of auth you want to use.
+## Contributing
 
-Right now, we support the following auth adapters:
-
-- `cookie` - Stores users and the auth token in a cookie. The is purely for demo purposes as it means we don't need any backend. You should NOT use this in production.
-
-## License
-
-MIT
-
-## Credits
-
-Copyright Dana Woodman 2022
+Contributions are welcome! If you have ideas for improvements, new features, or bug fixes, please open an issue or submit a pull request.

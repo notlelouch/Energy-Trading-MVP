@@ -1,116 +1,3 @@
-// import { createPool } from "@vercel/postgres";
-// import { POSTGRES_URL } from "$env/static/private";
-// import type { PageServerLoad } from "./$types";
-// import * as NeucronSDK from 'neucron-sdk'; // Import everything from neucron-sdk
-// import { session} from "$lib/stores/session";
-// import { get } from 'svelte/store';
-
-// const db = createPool({ connectionString: POSTGRES_URL });
-
-// export const load: PageServerLoad = async ({ locals }) => {
-//   const user = locals.user;
-
-//   if (!user) {
-//     return { listings: [], error: "User not authenticated" };
-//   }
-
-//   try {
-//     const result = await db.query(
-//       `SELECT *
-//        FROM energy_listings
-//        WHERE status = 'active'
-//        ORDER BY created_at DESC`
-//     );
-
-//     const listings = result.rows.map((listing) => ({
-//       ...listing,
-//       created_at: listing.created_at.toISOString(),
-//       price_per_unit: parseFloat(listing.price_per_unit).toFixed(2)
-//     }));
-
-//     return { listings };
-//   } catch (error) {
-//     console.error("Error fetching energy listings:", error);
-//     return { listings: [], error: "Error fetching energy listings" };
-//   }
-// };
-
-// export const actions = {
-//   purchase: async ({ request, locals }) => {
-//     const user = locals.user;
-//     if (!user) {
-//       return { success: false, error: "User not authenticated" };
-//     }
-
-//     const sessionData = get(session);
-
-//     const formData = await request.formData();
-//     const listingId = formData.get("listingId");
-
-//     // Use NeucronSDK directly or initialize it if it's a constructor
-//     const neucron = typeof NeucronSDK.default === 'function' ? new NeucronSDK.default() : NeucronSDK;
-//     const authModule = neucron.authentication;
-//     const walletModule = neucron.wallet;
-
-//     console.log(sessionData.user?.email, sessionData.user?.password)
-//     try {
-//       // Login to Neucron
-//       const loginResponse = await authModule.login({
-//         email: sessionData.user?.email,
-//         password: sessionData.user?.password
-//       });
-//       console.log(loginResponse);
-
-//       // Check if the listing is still available
-//       const listingResult = await db.query(
-//         "SELECT * FROM energy_listings WHERE listing_id = $1 AND status = 'active' FOR UPDATE",
-//         [listingId]
-//       );
-
-//       if (listingResult.rows.length === 0) {
-//         throw new Error("Listing not available");
-//       }
-
-//       const listing = listingResult.rows[0];
-
-//       console.log(listing.user_id, listing.quantity, listing.price_per_unit)
-
-//       // Prepare payment options
-//       const options = {
-//         outputs: [
-//           {
-//             address: listing.user_id,
-//             note: 'Energy Purchase',
-//             amount: listing.quantity * listing.price_per_unit
-//           }
-//         ]
-//       };
-//       console.log(options);
-
-//       // Make the payment
-//       const payResponse = await neucron.pay.txSpend(options);
-//       console.log(payResponse);
-
-//       // If payment is successful, update the listing status
-//       if (payResponse.data.txid) {
-//         await db.query(
-//           "UPDATE energy_listings SET status = 'sold' WHERE listing_id = $1",
-//           [listingId]
-//         );
-
-//         // You might want to create a purchase record here
-
-//         return { success: true, payment: payResponse.data.txid };
-//       } else {
-//         throw new Error("Payment failed");
-//       }
-//     } catch (error) {
-//       console.error("Error purchasing energy listing:", error);
-//       return { success: false, error: "Error purchasing energy listing" };
-//     }
-//   }
-// };
-
 import { createPool } from "@vercel/postgres";
 import { POSTGRES_URL } from "$env/static/private";
 import type { PageServerLoad } from "./$types";
@@ -153,6 +40,14 @@ export const load: PageServerLoad = async ({ locals }) => {
   }
 
   try {
+    // // Deleting the listing for a specific user
+    // const userIdToDelete = "anandharsh999@gmail.com";
+    // await db.query(`DELETE FROM energy_listings WHERE user_id = $1`, [
+    //   userIdToDelete,
+    // ]);
+
+    // console.log(`Listings for user_id ${userIdToDelete} deleted successfully.`);
+
     const result = await db.query(
       `SELECT *
        FROM energy_listings
